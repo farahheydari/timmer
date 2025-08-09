@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-size: cover;
+            background-image: url(assets/img/happy-children-with-medals-on-school-competition-on-contest-smiling-kids-with-prizes-celebrate-win-in-championship-illustration-free-vector.png);
+            background-repeat: no-repeat;
+        }
+        .container{
+            width: 400px;
+            height: 200px;
+            border: 2px solid rgb(66, 6, 94);
+            background-color: rgba(171, 117, 202, 0.445);
+            border-radius: 8px;
+            margin: 100px auto;
+            display: block;
+        }
+        .parentH{
+            height: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            >h2{
+                width: 80px;
+                display: flex;
+                justify-content: center;
+                margin: 0 10px;
+                color: rgb(37, 7, 65);
+            }
+        }
+        .parentBTN{
+            height: 50%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            >button{
+                padding: 10px;
+                font-size: 20px;
+                border-radius: 8px;
+                background-color: blueviolet;
+                color: wheat;
+            }
+        }
+        .lap{
+            margin: 100px auto;
+            width: 400px;
+            height: 200px;
+            border: 2px solid rgb(66, 6, 94);
+            background-color: rgb(179, 127, 209);
+            border-radius: 8px;
+            display: none;
+            >h2{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            color: rgb(25, 3, 46);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="parentH">
+            <h2>00</h2>
+            <h2>00</h2>
+            <h2>00</h2>
+        </div>
+        <div class="parentBTN">
+            <button>start</button>
+            <button>pause</button>
+            <button>lab</button>
+        </div>
+    </div>
+    <div class="lap">
+        <h2></h2>
+    </div>
+</body>
+<script>
+    let btn=document.querySelectorAll('.parentBTN>button')
+    let h = document.querySelectorAll('.parentH>h2')
+    let hLap = document.querySelector('.lap>h2')
+    let lap = document.querySelector('.lap')
+    let container=document.querySelector('.container')
+    let ms = 0
+    let s =0
+    let m = 0
+    let x
+    btn[0].addEventListener('click' , (e)=>{
+        /////just for first time do click start/////
+        e.target.setAttribute('disabled' , 'disabled')
+        /////just for first time do click start/////
+        x=setInterval(()=>{
+        if(ms<99){
+            ms++
+            h[0].innerHTML=ms
+        }else{
+            ms=0
+             if(s<59){
+            s++
+            h[1].innerHTML=s
+            }else{
+                s=0
+                m++
+                h[2].innerHTML=m
+            }
+        }
+       })
+    })
+    btn[1].addEventListener('click' , (e)=>{
+        btn[0].removeAttribute('disabled')
+        clearInterval(x)
+    })
+    btn[2].addEventListener('click' , ()=>{
+        container.style.display='none'
+        lap.style.display='block'
+        hLap.innerHTML=('millisecond :'+ "     " +ms+ '      second:'+ "    "+s+ '      minutes:'+ "    "+m)
+        
+    })
+</script>
+</html>
